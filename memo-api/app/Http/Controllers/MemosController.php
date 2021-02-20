@@ -55,8 +55,21 @@ class MemosController extends Controller
     /**
      * メモの更新
      */
-    public function edit()
+    public function update(Memo $memo, Request $request)
     {
+        $memo->title = $request->title;
+        $memo->content = $request->content;
+        $memo->save();
+        if($memo) {
+            return response()->json([
+                'data' => $memo,
+                'message' => 'updated memo!'
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'not found memo...'
+            ], 404);
+        }
     }
 
     /**

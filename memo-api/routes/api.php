@@ -23,3 +23,6 @@ Route::post('/memos', [MemosController::class, 'create']);
 
 // メモ詳細の表示
 Route::get('/memos/{memo}', [MemosController::class, 'show']);
+
+// メモの更新
+Route::put('/memos/{memo}', [MemosController::class, 'update']);
