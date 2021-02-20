@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="card">
+    <v-card elevation="1" tile>
       <h2>タイトル</h2>
       <p>
         説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。
@@ -11,7 +11,7 @@
       <button @click="$router.push({ name: 'Edit', params: { id: 1 } })">
         編集する
       </button>
-    </div>
+    </v-card>
   </div>
 </template>
 
