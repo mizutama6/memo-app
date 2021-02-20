@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="card">
+      <h2>タイトル</h2>
+      <p>
+        説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。
+      </p>
+      <button @click="$router.push({ name: 'Detail', params: { id: 1 } })">
+        もっとみる
+      </button>
+      <button @click="$router.push({ name: 'Edit', params: { id: 1 } })">
+        編集する
+      </button>
+    </div>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+<style scoped>
+.card {
+  border: 1px solid #555;
+  padding: 10px;
+  margin: 10px auto;
 }
-</script>
+</style>
