@@ -62,12 +62,11 @@ class MemosController extends Controller
         $memo->save();
         if($memo) {
             return response()->json([
-                'data' => $memo,
-                'message' => 'updated memo!'
+                'message' => 'updated a memo!'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'not found memo...'
+                'message' => 'not found a memo...'
             ], 404);
         }
     }
