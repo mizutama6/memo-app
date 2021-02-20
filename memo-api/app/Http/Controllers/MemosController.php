@@ -79,11 +79,11 @@ class MemosController extends Controller
         $memo->delete();
         if($memo) {
             return response()->json([
-                'message' => 'deleted memo!'
+                'message' => 'deleted a memo!'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'not fount memo...'
+                'message' => 'not fount a memo...'
             ], 404);
         }
     }
