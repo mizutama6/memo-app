@@ -24,12 +24,12 @@ class MemosController extends Controller
      */
     public function create(Request $request)
     {
-        $memo = new Memo;
-        $memo->title = $request->title;
-        $memo->content = $request->content;
-        $memo->save();
+        $item = new Memo;
+        $item->title = $request->title;
+        $item->content = $request->content;
+        $item->save();
         return response()->json([
-            'data' => $memo,
+            'data' => $item,
             'message' => 'created a new memo!'
         ], 200);
     }
