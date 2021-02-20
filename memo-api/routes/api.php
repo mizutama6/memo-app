@@ -26,3 +26,6 @@ Route::get('/memos/{memo}', [MemosController::class, 'show']);
 
 // メモの更新
 Route::put('/memos/{memo}', [MemosController::class, 'update']);
+
+// メモの削除
+Route::delete('/memos/{memo}', [MemosController::class, 'destroy']);

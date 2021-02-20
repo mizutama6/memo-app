@@ -75,7 +75,17 @@ class MemosController extends Controller
     /**
      * メモの削除
      */
-    public function delete()
+    public function destroy(Memo $memo)
     {
+        $memo->delete();
+        if($memo) {
+            return response()->json([
+                'message' => 'deleted memo!'
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'not fount memo...'
+            ], 404);
+        }
     }
 }
