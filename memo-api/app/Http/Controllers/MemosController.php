@@ -42,11 +42,11 @@ class MemosController extends Controller
         if($memo) {
             return response()->json([
                 'data' => $memo,
-                'message' => 'show memo!'
+                'message' => 'showed a memo!'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'memo not found...'
+                'message' => 'not found a memo...'
             ], 404);
         }
     }
