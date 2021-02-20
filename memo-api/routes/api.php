@@ -20,3 +20,6 @@ Route::get('/memos', [MemosController::class, 'index']);
 
 // メモ新規作成
 Route::post('/memos', [MemosController::class, 'create']);
+
+// メモ詳細の表示
+Route::get('/memos/{memo}', [MemosController::class, 'show']);

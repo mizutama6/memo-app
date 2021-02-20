@@ -35,10 +35,20 @@ class MemosController extends Controller
     }
 
     /**
-     * メモの詳細情報を表示
+     * メモの詳細情報を取得
      */
-    public function show()
+    public function show(Memo $memo)
     {
+        if($memo) {
+            return response()->json([
+                'data' => $memo,
+                'message' => 'show memo!'
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'memo not found...'
+            ], 404);
+        }
     }
 
 
