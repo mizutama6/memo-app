@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class MemosController extends Controller
 {
     /**
-     * 全てのメモを取得
+     * 全てのmemoを取得
+     * $items = 全てのmemoの情報
      */
     public function index(Memo $memo)
     {
@@ -20,7 +21,8 @@ class MemosController extends Controller
     }
 
     /**
-     * メモの新規作成
+     * memoの新規作成
+     * $item = 新しいmemoの情報
      */
     public function create(Request $request)
     {
@@ -35,7 +37,8 @@ class MemosController extends Controller
     }
 
     /**
-     * メモの詳細情報を取得
+     * memoの詳細情報を取得
+     * $memo = 特定のmemoの情報
      */
     public function show(Memo $memo)
     {
@@ -53,7 +56,8 @@ class MemosController extends Controller
 
 
     /**
-     * メモの更新
+     * memoの更新
+     * $memo = 特定のmemoの情報
      */
     public function update(Memo $memo, Request $request)
     {
@@ -72,7 +76,8 @@ class MemosController extends Controller
     }
 
     /**
-     * メモの削除
+     * memoの削除
+     * $memo = 特定のmemoの情報
      */
     public function destroy(Memo $memo)
     {

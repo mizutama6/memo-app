@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// メモ一覧取得
+// memo一覧取得
 Route::get('/memos', [MemosController::class, 'index']);
 
-// メモ新規作成
+// memo新規作成
 Route::post('/memos', [MemosController::class, 'create']);
 
-// メモ詳細の表示
+// memo詳細の取得
 Route::get('/memos/{memo}', [MemosController::class, 'show']);
 
-// メモの更新
+// memoの更新
 Route::put('/memos/{memo}', [MemosController::class, 'update']);
 
-// メモの削除
+// memoの削除
 Route::delete('/memos/{memo}', [MemosController::class, 'destroy']);
