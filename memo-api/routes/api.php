@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// メモ一覧取得
 Route::get('/memos', [MemosController::class, 'index']);
+
+// メモ新規作成
+Route::post('/memos', [MemosController::class, 'create']);
