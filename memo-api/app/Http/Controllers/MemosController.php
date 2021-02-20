@@ -30,7 +30,7 @@ class MemosController extends Controller
         $memo->save();
         return response()->json([
             'data' => $memo,
-            'message' => 'create new memo!'
+            'message' => 'created a new memo!'
         ], 200);
     }
 
