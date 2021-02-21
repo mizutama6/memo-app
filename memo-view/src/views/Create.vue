@@ -1,14 +1,14 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="sendData">
     <v-text-field
-      v-model="title"
+      v-model="newMemoData.title"
       :counter="100"
       label="Title"
       :rules="titleRules"
     ></v-text-field>
 
     <v-textarea
-      v-model="content"
+      v-model="newMemoData.content"
       label="Content"
       :rules="contentRules"
       auto-grow
@@ -26,27 +26,37 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      title: "",
+      newMemoData: {},
       titleRules: [
         (v) => !!v || "Title is required",
         (v) =>
           (v && v.length <= 100) || "Title must be less than 100 characters",
       ],
-      content: "",
       contentRules: [(v) => !!v || "Content is required"],
     };
   },
   methods: {
     sendData() {
-      if (this.title.length === 0 || this.content.length === 0) {
-        alert("全ての項目を入力してください");
+      if (this.title === "" || this.content === "") {
+        alert("正しく入力してください");
         return;
       } else {
-        alert("Sent Datas!");
-        this.$router.replace({ name: "Home" });
+        axios
+          .post(
+            "https://memo-app-9826.herokuapp.com/api/memos",
+            this.newMemoData
+          )
+          .then((res) => {
+            alert("memoが作成されました！");
+            console.log(res);
+            this.$router.replace({ name: "Home" });
+          }).catch(err => {
+            alert(err);
+          });
       }
     },
   },
