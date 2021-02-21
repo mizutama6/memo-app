@@ -55,11 +55,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.card {
-  border: 1px solid #555;
-  padding: 10px;
-  margin: 10px auto;
-}
-</style>
