@@ -15,8 +15,8 @@
     <v-card-actions>
       <v-btn
         @click="$router.push({ name: 'Create' })"
-        color="yellow lighten-2"
-        class="brown--text"
+        depressed 
+        class="cyan--text"
       >
         Create a new "memo"
       </v-btn>
