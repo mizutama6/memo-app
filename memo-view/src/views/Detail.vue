@@ -3,11 +3,11 @@
     <v-card>
       <v-card-text>
         <v-form readonly>
-          <v-text-field label="Title" :value="data.title" outlined></v-text-field>
+          <v-text-field label="Title" :value="memo.title" outlined></v-text-field>
 
-          <v-textarea label="Content" :value="data.content" outlined auto-grow></v-textarea>
+          <v-textarea label="Content" :value="memo.content" outlined auto-grow></v-textarea>
 
-          <v-text-field label="Created at" :value="data.created_at" outlined></v-text-field>
+          <v-text-field label="Created at" :value="memo.created_at" outlined></v-text-field>
 
           <v-btn
             depressed
@@ -24,21 +24,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   props: {
-    id: Number,
+    id: String,
   },
   data() {
     return {
-      data: {
-        title: "明日の献立",
-        content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        created_at: "2020/02/12",
-      },
+      memo: {},
     };
   },
+  methods: {
+    async getData() {
+      const data = await axios.get(`https://memo-app-9826.herokuapp.com/api/memos/${this.id}`);
+      this.memo = data.data.data;
+    },
+  },
   mounted() {
-    console.log(this.id);
+    this.getData();
   },
 };
 </script>
