@@ -4,17 +4,13 @@
       <v-card-text>
         <v-form method="POST" @submit.prevent="sendData">
           <v-text-field
-            v-model="title"
+            v-model="memo.title"
             label="Title"
-            :value="data.title"
-            outlined
           ></v-text-field>
 
           <v-textarea
-            v-model="content"
+            v-model="memo.content"
             label="Content"
-            :value="data.content"
-            outlined
             auto-grow
           ></v-textarea>
 
@@ -32,34 +28,41 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   props: {
     id: Number,
   },
   data() {
     return {
-      data: {
-        title: "明日の献立",
-        content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        created_at: "2020/02/12",
-      },
-      title: '',
-      content: '',
+      memo: {},
     };
   },
   methods: {
     sendData() {
-      if(this.title.length === 0 || this.content.length === 0) {
+      if(this.title === '' || this.content === '') {
         alert('正しく入力してください');
         return;
       } else {
-        alert('memoが更新されました');
-        this.$router.replace({name: 'Home'});
+        axios.put(`https://memo-app-9826.herokuapp.com/api/memos/${this.id}`, this.memo)
+          .then(res => {
+            alert('memoが更新されました');
+            console.log(res);
+            this.$router.replace({name: 'Home'});
+          }).catch(err => {
+            alert(err);
+            return;
+          });
       }
-    }
+    },
+    async getData() {
+      const data = await axios.get(`https://memo-app-9826.herokuapp.com/api/memos/${this.id}`);
+      this.memo = data.data.data;
+      console.log(this.memo)
+    },
   },
   mounted() {
-    console.log(this.id);
+    this.getData();
   },
 };
 </script>
