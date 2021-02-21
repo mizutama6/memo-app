@@ -2,7 +2,7 @@
   <div class="detail">
     <v-card>
       <v-card-text>
-        <v-form disabled>
+        <v-form readonly>
           <v-text-field label="Title" :value="data.title" outlined></v-text-field>
 
           <v-textarea label="Content" :value="data.content" outlined auto-grow></v-textarea>
