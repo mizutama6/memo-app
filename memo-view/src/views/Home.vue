@@ -31,40 +31,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
-      memos: [
-        {
-          title: "明日の献立",
-          content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-        { title: "今日の宿題", content: "現代文の問題、数学教科書p20の問題" },
-        {
-          title: "明日の献立",
-          content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-        {
-          title: "明日の献立",
-          content:
-          "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-        { title: "今日の宿題", content: "現代文の問題、数学教科書p20の問題" },
-        {
-          title: "明日の献立",
-          content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-        { title: "今日の宿題", content: "現代文の問題、数学教科書p20の問題" },
-        {
-          title: "明日の献立",
-          content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-        { title: "今日の宿題", content: "現代文の問題、数学教科書p20の問題" },
-        {
-          title: "明日の献立",
-          content: "卵焼き、味噌汁、アジの塩焼き、豆腐味噌汁",
-        },
-      ],
+      memos: [],
     };
   },
   filters: {
@@ -73,6 +44,15 @@ export default {
       return text.length > length ? text.slice(0, length) + "..." : text;
     },
   },
+  methods: {
+    async getDatas() {
+      const datas = await axios.get('https://memo-app-9826.herokuapp.com/api/memos');
+      this.memos = datas.data.data;
+    }
+  },
+  mounted() {
+    this.getDatas();
+  }
 };
 </script>
 
