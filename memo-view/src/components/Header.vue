@@ -7,7 +7,7 @@
     scroll-target="#scrolling-techniques-7"
   >
     <v-toolbar-title @click="$router.push({ name: 'Home' })">
-      <v-btn class="text-h4" text color="#fff">Memo App</v-btn>
+      <v-btn class="text-h4 font-weight-medium" text color="#fff">Memo App</v-btn>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
