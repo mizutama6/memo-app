@@ -2,7 +2,7 @@
   <v-row class="mb-6" justify="center">
     <v-col
       cols="12"
-      sm="8"
+      sm="6"
       md="4"
       lg="3"
       v-for="(memo, index) in memos"
