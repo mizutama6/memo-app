@@ -30,6 +30,15 @@
             >
               edit
             </v-btn>
+
+            <v-btn
+              depressed
+              text
+              color="pink"
+              @click="deleteMemo"
+            >
+              delete
+            </v-btn>
           </v-card-actions>
         </v-form>
       </v-card-text>
@@ -61,6 +70,25 @@ export default {
         console.log(err);
       });
     },
+    /**
+     * memoを削除する
+     */
+    deleteMemo() {
+      const deleteConfirmation = confirm('削除しますか？');
+      if(deleteConfirmation) {
+        axios.delete(
+          `https://memo-app-9826.herokuapp.com/api/memos/${this.id}`
+        ).then(res => {
+          console.log(res);
+          alert('memoを削除しました！');
+          this.$router.replace({name: 'Home'});
+        }).catch(err => {
+          alert(err);
+        });
+      } else {
+        return;
+      }
+    }
   },
   mounted() {
     this.getData();
