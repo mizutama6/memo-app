@@ -5,12 +5,12 @@
       sm="8"
       md="4"
       lg="3"
-      v-for="(data, index) in memos"
+      v-for="(memo, index) in memos"
       :key="index"
     >
       <v-card height="200">
-        <v-card-title>{{ data.title }}</v-card-title>
-        <v-card-text>{{ data.content | omittedText }}</v-card-text>
+        <v-card-title>{{ memo.title }}</v-card-title>
+        <v-card-text>{{ memo.content | omittedText }}</v-card-text>
 
         <v-card-actions>
           <v-btn
@@ -18,7 +18,7 @@
             text
             absolute
             bottom
-            @click="$router.push({ name: 'Detail', params: {id: index+1}})"
+            @click="$router.push({ name: 'Detail', params: {id: memo.id}})"
             >
               show more
             </v-btn
@@ -48,6 +48,7 @@ export default {
     async getDatas() {
       const datas = await axios.get('https://memo-app-9826.herokuapp.com/api/memos');
       this.memos = datas.data.data;
+      console.log(this.memos);
     }
   },
   mounted() {
